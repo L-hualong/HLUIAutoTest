@@ -10,7 +10,7 @@ import UIKit
 
 open class HLSwiftMirrorTool: NSObject {
     
-    @objc static func swiftNameWithInstance(cla: Any, instance: AnyObject) -> String?{
+    @objc open static func swiftNameWithInstance(cla: Any, instance: AnyObject) -> String?{
         
         var key:String? = nil
 

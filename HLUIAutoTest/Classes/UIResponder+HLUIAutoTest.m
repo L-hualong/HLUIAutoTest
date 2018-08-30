@@ -20,14 +20,7 @@
         Ivar thisIvar = ivars[i];
         const char *type = ivar_getTypeEncoding(thisIvar);
         NSString *stringType =  [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
-//        NSLog(@"%@", stringType);
-        //判断是否是swift类
-//        if ([stringType isEqualToString: @""]){
-//            if ((object_getIvar(self, thisIvar) == instance)) {//此处 crash 不要慌！
-//                key = [NSString stringWithUTF8String:ivar_getName(thisIvar)];
-//                break;
-//            }
-//        }
+        //NSLog(@"%@", stringType);
         if (![stringType hasPrefix:@"@"]) {
             continue;
         }
@@ -52,7 +45,6 @@
         //属性描述
         const char * propertyAttr = property_getAttributes(property);
         NSLog(@"属性描述为 %s 的 %s ", propertyAttr, name);
-        
         //属性的特性
         unsigned int attrCount = 0;
         objc_property_attribute_t * attrs = property_copyAttributeList(property, &attrCount);
@@ -77,8 +69,7 @@
     NSString *stringClassName =  [NSString stringWithCString:className encoding:NSUTF8StringEncoding];
     //判断是否是swift类
     if ([stringClassName containsString:@"."]) {
-//        name = [self swiftNameWithInstance:instance];
-//        name = [swiftRuntime swiftNameWithInstanceWithCla:self instance:instance];
+        name = [HLSwiftMirrorTool swiftNameWithInstanceWithCla:self instance:instance];
     } else {
         name = [self nameWithInstance:instance];
     }
