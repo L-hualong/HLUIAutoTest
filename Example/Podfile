@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'HLUIAutoTest_Example' do
+  pod 'HLUIAutoTest', :path => '../'
+
+  target 'HLUIAutoTest_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
